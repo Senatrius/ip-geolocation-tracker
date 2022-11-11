@@ -1,15 +1,17 @@
 import styled from "styled-components"
+import { Search } from "./components/Search"
 import { TextSizes } from "./globalStyles"
 
 const Wrapper = styled.div`
-  position; relative;
+  position: relative;
   display: grid;
-  grid-template-rows: 35% 65%;
+  grid-template-rows: minmax(9rem, 35%) 65%;
   min-height: 100vh;
 `
 
 const Pattern = styled.div`
   width: 100%;
+  min-height: 10rem;
   grid-row: 1/2;
   background-image: url('src/assets/pattern-bg.png');
   background-position: 54% 0;
@@ -52,6 +54,7 @@ const App = () => {
     <Pattern />
     <UI>
       <Title>IP Address Tracker</Title>
+      <Search />
     </UI>
     <MapWrapper>
 
