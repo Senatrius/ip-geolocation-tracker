@@ -1,7 +1,9 @@
 import styled from "styled-components"
 import { Details } from "./components/Details"
+import { Map } from "./components/Map"
 import { Search } from "./components/Search"
 import { TextSizes } from "./globalStyles"
+
 
 const Wrapper = styled.div`
   position: relative;
@@ -22,7 +24,9 @@ const Pattern = styled.div`
 
 const MapWrapper = styled.div`
   width: 100%;
+  height: auto;
   grid-row: 2/3;
+  overflow: hidden;
 `
 
 const UI = styled.div`
@@ -58,8 +62,8 @@ const App = () => {
       <Search />
       <Details />
     </UI>
-    <MapWrapper>
-
+    <MapWrapper className="leaflet-container">
+      <Map />
     </MapWrapper>
   </Wrapper>
 }

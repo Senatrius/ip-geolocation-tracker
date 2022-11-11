@@ -10,6 +10,7 @@ const DetailsWrapper = styled.div`
   margin-top: 1.5rem;
   border-radius: 1rem;
   background: white;
+  z-index: 99999;
 
   @media screen and (min-width: 767px) {
     flex-direction: row;
