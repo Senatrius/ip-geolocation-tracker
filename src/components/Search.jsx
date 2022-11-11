@@ -17,6 +17,7 @@ const SearchInput = styled.input`
   cursor: pointer;
   outline: none;
   border: none;
+  min-width: 0;
 `
 
 const SearchButton = styled.button`
