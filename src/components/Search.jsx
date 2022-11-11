@@ -38,7 +38,7 @@ const SearchButton = styled.button`
 
 export const Search = () => {
   return <SearchWrapper>
-    <SearchInput />
+    <SearchInput placeholder="Search for any IP address or domain" />
     <SearchButton />
   </SearchWrapper>
 }

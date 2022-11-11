@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Details } from "./components/Details"
 import { Search } from "./components/Search"
 import { TextSizes } from "./globalStyles"
 
@@ -55,6 +56,7 @@ const App = () => {
     <UI>
       <Title>IP Address Tracker</Title>
       <Search />
+      <Details />
     </UI>
     <MapWrapper>
 
