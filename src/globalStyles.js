@@ -6,6 +6,7 @@ export const Colors = {
 }
 
 export const TextSizes = {
+  x_large: '2rem',
   large: '1.625rem',
   medium: '1.125rem',
   small: '0.75rem',
