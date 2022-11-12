@@ -61,7 +61,7 @@ const App = () => {
 
   const fetchIpData = async (ip, domain) => {
     try {
-      const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_LvP3XeTX4Wdz9n1sffuJGW39cYeNi&ipAddress=${ip}&domain=${domain}`, {method: "GET"})
+      const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_IPFY_API_KEY}&ipAddress=${ip}&domain=${domain}`, {method: "GET"})
       const data = await response.json();
 
       setIpData(data)

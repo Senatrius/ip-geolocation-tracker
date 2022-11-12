@@ -5,7 +5,6 @@ import 'leaflet/dist/leaflet.css'
 import { SetView } from './SetView';
 
 export const Map = ({ipData}) => {
-  console.log(ipData)
   const [state, setState] = useState({latitude: 90, longitude: 135})
 
   const LeafIcon = L.Icon.extend({
