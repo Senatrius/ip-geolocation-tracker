@@ -59,13 +59,15 @@ const Title = styled.h1`
 const App = () => {
   const [ipData, setIpData] = useState(null);
 
-  const fetchIpData = async ip => {
-    console.log(ip)
-    const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_LvP3XeTX4Wdz9n1sffuJGW39cYeNi&ipAddress=${ip}`, {method: "GET"})
-    const data = await response.json();
-  
-    console.log(data)
-    setIpData(data)
+  const fetchIpData = async (ip, domain) => {
+    try {
+      const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_LvP3XeTX4Wdz9n1sffuJGW39cYeNi&ipAddress=${ip}&domain=${domain}`, {method: "GET"})
+      const data = await response.json();
+
+      setIpData(data)
+    } catch(err) {
+      return false;
+    }
   }
 
   return <Wrapper>

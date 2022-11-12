@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../globalStyles";
 import ipRegex from 'ip-regex';
+import isValidDomain from "is-valid-domain";
 
 const SearchWrapper = styled.div`
   width: 100%;
@@ -45,21 +46,35 @@ export const Search = ({fetchIpData}) => {
   const [isError, setIsError] = useState(false);
 
   const handleClick = value => {
-    if(ipRegex({exact: true}).test(value) === false) {
-      console.log(value)
-      setIsError(true)
-      return false;
+    if(ipRegex({exact: true}).test(value)) {
+      fetchIpData(value,"")
+      setIsError(false);
+      return true;
     }
-  
-    fetchIpData(value)
+
+    if(isValidDomain(value)) {
+      fetch("https://" + value, {mode: "no-cors"}).then(response => {
+        if(response.status === 0 || response.status === 200) {
+          fetchIpData("",value)
+          setIsError(false);
+          return true;
+        }
+        setIsError(true)
+        return false;
+      })
+    }
+
+    setIsError(true)
+    return false;
   }
 
   const handleChange = e => {
-    setIsError(false)
+    isError && setIsError(false)
+    setValue(e.target.value)
   }
 
   return <SearchWrapper>
-    <SearchInput style={{background: isError ? "#ffacac" : "white"}} onChange={() => handleChange()} placeholder="Search for any IP address or domain" />
+    <SearchInput type="text" style={{background: isError ? "#ffacac" : "white"}} onChange={e => handleChange(e)} placeholder="Search for any IP address or domain" />
     <SearchButton onClick={() => handleClick(value)} />
   </SearchWrapper>
 }
