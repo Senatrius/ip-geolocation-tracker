@@ -37,7 +37,7 @@ const Value = styled.p`
   font-weight: 500;
   color: ${Colors.darkGray};
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 1000px) {
     font-size: ${TextSizes.large};
   }
 `
@@ -65,7 +65,7 @@ const ValueWrapper = styled.div`
         transform: translateY(-50%);
         right: 0;
         width: 1px;
-        height: 4.5rem;
+        height: 50%;
         background: ${Colors.lightGray};
       }
     }
