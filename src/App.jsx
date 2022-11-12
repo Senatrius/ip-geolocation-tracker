@@ -64,6 +64,7 @@ const App = () => {
     const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_LvP3XeTX4Wdz9n1sffuJGW39cYeNi&ipAddress=${ip}`, {method: "GET"})
     const data = await response.json();
   
+    console.log(data)
     setIpData(data)
   }
 

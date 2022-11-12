@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../globalStyles";
+import ipRegex from 'ip-regex';
 
 const SearchWrapper = styled.div`
   width: 100%;
@@ -32,17 +33,33 @@ const SearchButton = styled.button`
   background-image: url('src/assets/icon-arrow.svg');
   background-repeat: no-repeat;
   background-position: center;
+  transition: .05s;
 
-  &::hover, &:focus {
+  &:hover, &:focus {
     background-color: ${Colors.darkGray}
   }
 `
 
 export const Search = ({fetchIpData}) => {
   const [value, setValue] = useState(null);
+  const [isError, setIsError] = useState(false);
+
+  const handleClick = value => {
+    if(ipRegex({exact: true}).test(value) === false) {
+      console.log(value)
+      setIsError(true)
+      return false;
+    }
+  
+    fetchIpData(value)
+  }
+
+  const handleChange = e => {
+    setIsError(false)
+  }
 
   return <SearchWrapper>
-    <SearchInput onChange={e => setValue(e.target.value)} placeholder="Search for any IP address or domain" />
-    <SearchButton onClick={() => fetchIpData(value)} />
+    <SearchInput style={{background: isError ? "#ffacac" : "white"}} onChange={() => handleChange()} placeholder="Search for any IP address or domain" />
+    <SearchButton onClick={() => handleClick(value)} />
   </SearchWrapper>
 }
