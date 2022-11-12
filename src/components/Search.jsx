@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../globalStyles";
 
@@ -37,9 +38,11 @@ const SearchButton = styled.button`
   }
 `
 
-export const Search = () => {
+export const Search = ({fetchIpData}) => {
+  const [value, setValue] = useState(null);
+
   return <SearchWrapper>
-    <SearchInput placeholder="Search for any IP address or domain" />
-    <SearchButton />
+    <SearchInput onChange={e => setValue(e.target.value)} placeholder="Search for any IP address or domain" />
+    <SearchButton onClick={() => fetchIpData(value)} />
   </SearchWrapper>
 }

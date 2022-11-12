@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import styled from "styled-components";
 import { Colors, TextSizes } from '../globalStyles';
 
@@ -72,25 +72,30 @@ const ValueWrapper = styled.div`
   }
 `
 
-export const Details = () => {
-  const [state, setState] = useState({ip: "test", location: "test", address: "test", isp: "test"})
+export const Details = ({ipData}) => {
+  console.log(ipData)
+  const [state, setState] = useState({ip: null, location: null, isp: null})
+
+  useEffect(() => {
+    setState({ip: ipData?.ip, location: ipData?.location, isp: ipData?.isp})
+  }, [ipData])
 
   return <DetailsWrapper>
     <ValueWrapper>
       <Title>Ip address</Title>
-      <Value>0.0.0.0</Value>
+      <Value>{state.ip || "—"}</Value>
     </ValueWrapper>
     <ValueWrapper>
       <Title>Location</Title>
-      <Value>Earth</Value>
+      <Value>{`${state.location?.city}, ${state.location?.region} ${state.location?.postalCode || ""}` || "—"}</Value>
     </ValueWrapper>
     <ValueWrapper>
       <Title>Timezone</Title>
-      <Value>UTC +02:00</Value>
+      <Value>{`UTC ${state.location?.timezone}` || "—"}</Value>
     </ValueWrapper>
     <ValueWrapper>
       <Title>Isp</Title>
-      <Value>Internet</Value>
+      <Value>{state.isp || "—"}</Value>
     </ValueWrapper>
   </DetailsWrapper>
 }

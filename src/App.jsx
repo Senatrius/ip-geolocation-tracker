@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 import { Details } from "./components/Details"
 import { Map } from "./components/Map"
@@ -40,6 +41,7 @@ const UI = styled.div`
   width: 87%;
   height: auto;
   max-width: 1110px;
+  z-index: 9999;
 `
 
 const Title = styled.h1`
@@ -55,12 +57,22 @@ const Title = styled.h1`
 `
 
 const App = () => {
+  const [ipData, setIpData] = useState(null);
+
+  const fetchIpData = async ip => {
+    console.log(ip)
+    const response = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_LvP3XeTX4Wdz9n1sffuJGW39cYeNi&ipAddress=${ip}`, {method: "GET"})
+    const data = await response.json();
+  
+    setIpData(data)
+  }
+
   return <Wrapper>
     <Pattern />
     <UI>
       <Title>IP Address Tracker</Title>
-      <Search />
-      <Details />
+      <Search fetchIpData={fetchIpData} />
+      <Details ipData={ipData} />
     </UI>
     <MapWrapper className="leaflet-container">
       <Map />
