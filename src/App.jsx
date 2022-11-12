@@ -75,7 +75,7 @@ const App = () => {
       <Details ipData={ipData} />
     </UI>
     <MapWrapper className="leaflet-container">
-      <Map />
+      {ipData && <Map ipData={ipData} />}
     </MapWrapper>
   </Wrapper>
 }

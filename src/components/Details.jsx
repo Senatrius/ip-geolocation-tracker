@@ -73,7 +73,6 @@ const ValueWrapper = styled.div`
 `
 
 export const Details = ({ipData}) => {
-  console.log(ipData)
   const [state, setState] = useState({ip: null, location: null, isp: null})
 
   useEffect(() => {
@@ -87,11 +86,11 @@ export const Details = ({ipData}) => {
     </ValueWrapper>
     <ValueWrapper>
       <Title>Location</Title>
-      <Value>{`${state.location?.city}, ${state.location?.region} ${state.location?.postalCode || ""}` || "—"}</Value>
+      <Value>{state.location == null ? "—" : `${state.location?.city}, ${state.location?.region} ${state.location?.postalCode || ""}`}</Value>
     </ValueWrapper>
     <ValueWrapper>
       <Title>Timezone</Title>
-      <Value>{`UTC ${state.location?.timezone}` || "—"}</Value>
+      <Value>{state.location?.timezone == null ? "—" : `UTC ${state.location?.timezone}`}</Value>
     </ValueWrapper>
     <ValueWrapper>
       <Title>Isp</Title>
