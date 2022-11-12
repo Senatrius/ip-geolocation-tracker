@@ -31,7 +31,7 @@ const SearchButton = styled.button`
   outline: none;
   border: none;
   background-color: black;
-  background-image: url('src/assets/icon-arrow.svg');
+  background-image: url('icon-arrow.svg');
   background-repeat: no-repeat;
   background-position: center;
   transition: .05s;

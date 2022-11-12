@@ -17,7 +17,7 @@ const Pattern = styled.div`
   width: 100%;
   min-height: 10rem;
   grid-row: 1/2;
-  background-image: url('src/assets/pattern-bg.png');
+  background-image: url('pattern-bg.png');
   background-position: 54% 0;
   background-repeat: no-repeat;
   background-size: cover;

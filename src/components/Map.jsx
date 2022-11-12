@@ -12,7 +12,7 @@ export const Map = ({ipData}) => {
   });
 
   const MarkerIcon = new LeafIcon({
-    iconUrl: "src/assets/icon-location.svg",
+    iconUrl: "icon-location.svg",
     iconAnchor: [28, 56],
     popupAnchor: [-4, 4]
   })
